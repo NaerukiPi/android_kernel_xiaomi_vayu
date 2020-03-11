@@ -181,6 +181,10 @@ class DtEntry(object):
         """int: DT entry custom2 for this DT image."""
         return self.__custom2
 
+    @property
+    def custom3(self):
+        """int: DT entry custom3 for this DT image."""
+        return self.__custom3
 
 class Dtbo(object):
     """
@@ -580,6 +584,9 @@ def parse_dt_entry(global_args, arglist):
     parser.add_argument('--custom2', type=str, dest='custom2',
                         action='store',
                         default=global_args.global_custom2)
+    parser.add_argument('--custom3', type=str, dest='custom3',
+                        action='store',
+                        default=global_args.global_custom3)
     return parser.parse_args(arglist)
 
 
@@ -621,6 +628,7 @@ def parse_dt_entries(global_args, arg_list):
             argv = arg_list[start_idx:end_idx]
         args = parse_dt_entry(global_args, argv)
         params = vars(args)
+        params['version'] = global_args.version
         params['dt_offset'] = 0
         params['dt_size'] = os.fstat(params['dt_file'].fileno()).st_size
         dt_entries.append(DtEntry(**params))
@@ -752,6 +760,8 @@ def parse_create_args(arg_list):
     parser.add_argument('--custom1', type=str, dest='global_custom1',
                         action='store', default='0')
     parser.add_argument('--custom2', type=str, dest='global_custom2',
+                        action='store', default='0')
+    parser.add_argument('--custom3', type=str, dest='global_custom3',
                         action='store', default='0')
     args = parser.parse_args(argv)
     return args, remainder
@@ -916,6 +926,7 @@ def print_create_usage(progname):
     sb.append('      --custom0=<number>')
     sb.append('      --custom1=<number>')
     sb.append('      --custom2=<number>\n')
+    sb.append('      --custom3=<number>\n')
 
     sb.append('      The value could be a number or a DT node path.')
     sb.append('      <number> could be a 32-bits digit or hex value, ex. 68000, 0x6800.')
