@@ -269,14 +269,12 @@ int memcg_nr_cache_ids;
 /* Protects memcg_nr_cache_ids */
 static DECLARE_RWSEM(memcg_cache_ids_sem);
 
-void memcg_get_cache_ids(void)
-{
-	down_read(&memcg_cache_ids_sem);
+void memcg_get_cache_ids(void) {
+ down_read(&memcg_cache_ids_sem);
 }
 
-void memcg_put_cache_ids(void)
-{
-	up_read(&memcg_cache_ids_sem);
+void memcg_put_cache_ids(void) {
+ up_read(&memcg_cache_ids_sem);
 }
 
 /*
