@@ -5368,6 +5368,8 @@ CONFIG_MIGT=y
 # CONFIG_MILLET is not set
 # CONFIG_MIGT_ENERGY_MODEL is not set
 
+# CONFIG_KSU_CMDLINE is not set
+
 #
 # Firmware Drivers
 #
