@@ -145,7 +145,8 @@ static int ten_thousand = 10000;
 static int six_hundred_forty_kb = 640 * 1024;
 #endif
 static int two_hundred_fifty_five = 255;
-
+static int __maybe_unused one_hundred_thousand = 100000;
+static unsigned long __maybe_unused ns_per_sec = NSEC_PER_SEC;
 /* this is needed for the proc_doulongvec_minmax of vm_dirty_bytes */
 static unsigned long dirty_bytes_min = 2 * PAGE_SIZE;
 
@@ -343,7 +344,7 @@ static struct ctl_table kern_table[] = {
 #ifdef CONFIG_SCHED_WALT
 	{
 		.procname       = "sched_cpu_high_irqload",
-		.data           = &sysctl_sched_cpu_high_irqload,
+		.data           = &sysctl_sched_walt_cpu_high_irqload,
 		.maxlen         = sizeof(unsigned int),
 		.mode           = 0644,
 		.proc_handler   = proc_dointvec,
@@ -454,8 +455,6 @@ static struct ctl_table kern_table[] = {
 		.extra2		= &max_sched_granularity_ns,
 	},
 	{
-<<<<<<< HEAD
-=======
 		.procname	= "walt_rtg_cfs_boost_prio",
 		.data		= &sysctl_walt_rtg_cfs_boost_prio,
 		.maxlen		= sizeof(unsigned int),
@@ -486,7 +485,6 @@ static struct ctl_table kern_table[] = {
 	},
 #endif
 	{
->>>>>>> 9612a3edd040 ([IMPORT] sched assist PREFER_SILVER)
 		.procname	= "sched_latency_ns",
 		.data		= &sysctl_sched_latency,
 		.maxlen		= sizeof(unsigned int),
