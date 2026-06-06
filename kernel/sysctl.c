@@ -454,8 +454,6 @@ static struct ctl_table kern_table[] = {
 		.extra2		= &max_sched_granularity_ns,
 	},
 	{
-<<<<<<< HEAD
-=======
 		.procname	= "walt_rtg_cfs_boost_prio",
 		.data		= &sysctl_walt_rtg_cfs_boost_prio,
 		.maxlen		= sizeof(unsigned int),
@@ -486,7 +484,6 @@ static struct ctl_table kern_table[] = {
 	},
 #endif
 	{
->>>>>>> 9612a3edd040 ([IMPORT] sched assist PREFER_SILVER)
 		.procname	= "sched_latency_ns",
 		.data		= &sysctl_sched_latency,
 		.maxlen		= sizeof(unsigned int),
